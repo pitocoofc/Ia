@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>API</title>
+</head>
+<body>
+<script>
+// pega o caminho da URL
+// exemplo: /Ia/oi
+const path = location.pathname.split("/").filter(Boolean)
+
+// último elemento = comando
+const cmd = path[path.length - 1]?.toLowerCase() || ""
+
+// resposta padrão
+let res = "Não entendi."
+
+// lógica da IA
+if (cmd === "oi") {
+  res = "Oi"
+}
+else if (cmd === "tudo-bem") {
+  res = "Tudo sim"
+}
+else if (cmd.startsWith("calc")) {
+  try {
+    const exp = cmd.replace("calc", "")
+    res = eval(exp)
+  } catch {
+    res = "Erro no cálculo"
+  }
+}
+
+// LIMPA A TELA E MOSTRA SÓ TEXTO
+document.body.innerText = res
+</script>
+</body>
+</html>
