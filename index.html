@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+const p = new URLSearchParams(location.search)
+const msg = (p.get("msg") || "").toLowerCase()
+
+let res = "Não entendi."
+
+if (msg === "oi") res = "Oi"
+else if (msg === "tudo bem") res = "Tudo sim"
+else if (msg.startsWith("calc ")) {
+  try {
+    res = eval(msg.replace("calc ", ""))
+  } catch {
+    res = "Erro no cálculo"
+  }
+}
+
+document.body.innerText = res
+</script>
+</body>
+</html>
